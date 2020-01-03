@@ -2,6 +2,7 @@ flm
 ==============================
 [//]: # (Badges)
 [![Travis Build Status](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/flm.svg?branch=master)](https://travis-ci.com/REPLACE_WITH_OWNER_ACCOUNT/flm)
+[![Documentation Status](https://readthedocs.org/projects/llc-membranes/badge/?version=latest)](https://llc-membranes.readthedocs.io/en/latest/?badge=latest)
 [![codecov](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/flm/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/flm/branch/master)
 
 Documentation and testing is coming soon!
