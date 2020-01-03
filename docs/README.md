@@ -3,11 +3,9 @@
 The docs for this project are built with [Sphinx](http://www.sphinx-doc.org/en/master/).
 To compile the docs, first ensure that Sphinx and the ReadTheDocs theme are installed.
 
-
 ```bash
 pip install sphinx sphinx_rtd_theme
 ```
-
 
 Once installed, you can use the `Makefile` in this directory to compile static HTML pages by
 ```bash
