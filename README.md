@@ -3,7 +3,7 @@ flm
 [//]: # (Badges)
 [![Travis Build Status](https://travis-ci.org/bencoscia/flm.svg?branch=master)](https://travis-ci.org/bencoscia/flm)
 [![Documentation Status](https://readthedocs.org/projects/flm/badge/?version=latest)](https://flm.readthedocs.io/en/latest/?badge=latest)
-[![codecov](https://codecov.io/gh/bencoscia/flm/branch/master/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/flm/branch/master)
+[![codecov](https://codecov.io/gh/bencoscia/flm/branch/master/graph/badge.svg)](https://codecov.io/gh/bencoscia/flm/branch/master)
 
 Documentation and testing are under development!
 
