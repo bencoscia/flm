@@ -117,7 +117,7 @@ class FLM:
         :type n: int
         :type progress: bool
         """
-
+        np.random.seed(1)
         self.noise = np.zeros([n, self.N])
 
         for i in tqdm.tqdm(range(n), disable=(not progress)):
