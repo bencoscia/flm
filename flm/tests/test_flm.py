@@ -75,6 +75,9 @@ def parameters1():
     output_params['msd_x'] = 190.0
     output_params['msd_y'] = 1494.172745
 
+    # autocovariance
+    output_params['autocov'] = 205.517425
+
     params['input_params'] = input_params
     params['output_params'] = output_params
 
@@ -194,6 +197,18 @@ def test_plot_msd(params):
 
     np.testing.assert_almost_equal(x_plot.sum(), output_params['msd_x'], 6)
     np.testing.assert_almost_equal(y_plot.sum(), output_params['msd_y'], 6)
+
+
+@pytest.mark.parametrize("params", test_params)
+def test_autocovariance(params):
+
+    output_params = params['output_params']
+
+    FLM = test_generate_realizations(params)
+
+    FLM.autocovariance()
+
+    np.testing.assert_almost_equal(FLM.autocov.sum(), output_params['autocov'], 6)
 
 
 if __name__ == "__main__":
