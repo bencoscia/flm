@@ -179,9 +179,12 @@ class FLM:
         # plot bars. Can't use plt.hist since I needed to modify the bin heights
         bin_width = bin_edges[1] - bin_edges[0]
         bin_centers = [i + bin_width / 2 for i in bin_edges[:-1]]
-        plt.figure()
+
         plt.bar(bin_centers, hist, width=bin_width)
         plt.plot(x, levy_stable.pdf(x, self.alpha, 0, loc=0, scale=self.scale), '--', color='black', lw=2)
+
+        # print(np.abs(x).sum(), levy_stable.pdf(x, self.alpha, 0, loc=0, scale=self.scale).sum())
+        # exit()
 
         # formatting
         plt.xlabel('Step Size', fontsize=14)
@@ -275,20 +278,24 @@ class FLM:
         if show:
             plt.show()
 
-    def plot_trajectory(self, traj_no, show=False):
+    def plot_trajectory(self, traj_no, show=False, overlay=False):
         """ Plot position versus time of FLM realization(s)
 
         :param traj_no: trajectory number or list of trajetory numbers to plot
         :param show: show the plot when done
+        :param overlay: plot data on top of active plot
 
         :type traj_no: int or list of int
         :type show: bool
+        :type overlay: bool
         """
 
         if type(traj_no) is int:
             traj_no = [traj_no]
 
-        plt.figure()
+        if not overlay:
+            plt.figure()
+
         for i in traj_no:
             plt.plot(self.realizations[i, :], lw=2)
 
@@ -300,21 +307,24 @@ class FLM:
         if show:
             plt.show()
 
-    def plot_msd(self, frac=0.4, nboot=200, confidence=68, show=False):
+    def plot_msd(self, frac=0.4, nboot=200, confidence=68, show=False, overlay=False):
         """ Calculate and plot the mean squared displacement of the FLM realizations
 
         :param frac: fraction of MSD plot to show
         :param nboot: number of bootstrap trials
         :param confidence: percent confidence interval
         :param show: show the plot when done
+        :param overlay: plot data on top of active plot
 
         :type frac: float
         :type nboot: int
         :type confidence: float
         :type show: bool
+        :type overlay: bool
         """
 
-        plt.figure()
+        if not overlay:
+            plt.figure()
 
         msds = timeseries.msd(self.realizations.T[..., np.newaxis], 0)
 
