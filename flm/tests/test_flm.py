@@ -20,32 +20,32 @@ def parameters1():
 
     params = dict()
 
-    inputparams = dict()
-    outputparams = dict()
+    input_params = dict()
+    output_params = dict()
 
     # __init__()
-    inputparams['alpha'] = 1.5
-    inputparams['hurst'] = 0.4
-    inputparams['nsteps'] = 50
-    inputparams['scale'] = 1
-    inputparams['correct_hurst'] = False
-    inputparams['truncate'] = None
-    inputparams['correct_truncation'] = True
-    inputparams['m'] = 2
-    inputparams['M'] = 60
-    inputparams['C'] = 1
+    input_params['alpha'] = 1.5
+    input_params['hurst'] = 0.4
+    input_params['n_steps'] = 50
+    input_params['scale'] = 1
+    input_params['correct_hurst'] = False
+    input_params['truncate'] = None
+    input_params['correct_truncation'] = True
+    input_params['m'] = 2
+    input_params['M'] = 60
+    input_params['C'] = 1
 
     # generate_realizations()
-    inputparams['ntraj'] = 2
-    inputparams['progress'] = True  # use progress bar
-    inputparams['truncated_distribution'] = None
+    input_params['n_traj'] = 2
+    input_params['progress'] = True  # use progress bar
+    input_params['truncated_distribution'] = None
 
-    outputparams['M'] = 78
-    outputparams['A'] = 0.3199853 + 0j
-    outputparams['realizations'] = -18.3440877
+    output_params['M'] = 78
+    output_params['A'] = 0.3199853 + 0j
+    output_params['realizations'] = -18.3440877
 
-    params['input_params'] = inputparams
-    params['output_params'] = outputparams
+    params['input_params'] = input_params
+    params['output_params'] = output_params
 
     return params
 
@@ -54,32 +54,32 @@ def parameters2():
 
     params = dict()
 
-    inputparams = dict()
-    outputparams = dict()
+    input_params = dict()
+    output_params = dict()
 
     # __init__()
-    inputparams['alpha'] = 1.5
-    inputparams['hurst'] = 0.4
-    inputparams['nsteps'] = 50
-    inputparams['scale'] = 1
-    inputparams['correct_hurst'] = False
-    inputparams['truncate'] = None
-    inputparams['correct_truncation'] = True
-    inputparams['m'] = 2
-    inputparams['M'] = 60
-    inputparams['C'] = 1
+    input_params['alpha'] = 1.5
+    input_params['hurst'] = 0.4
+    input_params['n_steps'] = 50
+    input_params['scale'] = 1
+    input_params['correct_hurst'] = False
+    input_params['truncate'] = None
+    input_params['correct_truncation'] = True
+    input_params['m'] = 2
+    input_params['M'] = 60
+    input_params['C'] = 1
 
     # generate_realizations()
-    inputparams['ntraj'] = 2
-    inputparams['progress'] = True  # use progress bar
-    inputparams['truncated_distribution'] = None
+    input_params['n_traj'] = 2
+    input_params['progress'] = True  # use progress bar
+    input_params['truncated_distribution'] = None
 
-    outputparams['M'] = 78
-    outputparams['A'] = 0.3199853 + 0j
+    output_params['M'] = 78
+    output_params['A'] = 0.3199853 + 0j
 
-    params['input_params'] = inputparams
-    params['output_params'] = outputparams
-    outputparams['realizations'] = -18.3440877
+    params['input_params'] = input_params
+    params['output_params'] = output_params
+    output_params['realizations'] = -18.3440877
 
     return params
 
@@ -87,12 +87,12 @@ def parameters2():
 test_params = [parameters1()]  # all of the sets of parameters to test. Just add to list
 
 
-def initialize(inputparams):
+def initialize(input_params):
 
-    return flm.FLM(inputparams['nsteps'], inputparams['hurst'], inputparams['alpha'], scale=inputparams['scale'],
-                   correct_hurst=inputparams['correct_hurst'], truncate=inputparams['truncate'],
-                   correct_truncation=inputparams['correct_truncation'], m=inputparams['m'], M=inputparams['M'],
-                   C=inputparams['C'])
+    return flm.FLM(input_params['n_steps'], input_params['hurst'], input_params['alpha'], scale=input_params['scale'],
+                   correct_hurst=input_params['correct_hurst'], truncate=input_params['truncate'],
+                   correct_truncation=input_params['correct_truncation'], m=input_params['m'], M=input_params['M'],
+                   C=input_params['C'])
 
 
 @pytest.mark.parametrize("params", test_params)
@@ -115,7 +115,7 @@ def test_generate_realizations(params):
 
     FLM = initialize(input_params)
 
-    FLM.generate_realizations(input_params['ntraj'], progress=input_params['progress'],
+    FLM.generate_realizations(input_params['n_traj'], progress=input_params['progress'],
                               truncated_distribution=input_params['truncated_distribution'])
 
     np.testing.assert_almost_equal(FLM.realizations[:, -1].sum(), output_params['realizations'], 6)
