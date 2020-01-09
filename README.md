@@ -5,9 +5,7 @@ flm
 [![Documentation Status](https://readthedocs.org/projects/flm/badge/?version=latest)](https://flm.readthedocs.io/en/latest/?badge=latest)
 [![codecov](https://codecov.io/gh/bencoscia/flm/branch/master/graph/badge.svg)](https://codecov.io/gh/bencoscia/flm/branch/master)
 
-Documentation and testing are under development!
-
-Simulate fractional Levy motion
+### Simulate fractional Levy motion
 
 Check out the basic functionality with the following commands:
 
